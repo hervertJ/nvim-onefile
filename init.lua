@@ -48,8 +48,8 @@ vim.pack.add({
 
 -- LSP
 
-vim.lsp.enable({ "lua_ls", "tinymist", "clangd", "pyright" })
-vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)
+vim.lsp.enable({ "lua_ls", "tinymist", "clangd", "pyright", "nil_ls" })
+vim.keymap.set('n', '<leader>uf', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>ud', function() --on/off warnigns
 	if vim.diagnostic.is_enabled() then
 		vim.diagnostic.enable(false)
@@ -70,6 +70,8 @@ cmp.setup({
 		['<CR>'] = { 'accept', 'fallback', },
 	},
 })
+
+--cmp.build = function() require('blink.cmp').build():pwait() end
 
 cmp.build():pwait()
 cmp.setup()

@@ -10,5 +10,10 @@ Only one file config nvim.
 
 - `ripgrep`, `fzf`, `fd`
 
+- Rust tools
+
 > [!NOTE]
 > LSP servers are managed via [Mason](https://github.com/mason-org/mason.nvim).
+
+> [!WARNING]
+> In NixOS you should **NOT** use Mason, install LSPs in `home.nix` or `configuration.nix`.
