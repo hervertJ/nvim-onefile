@@ -40,6 +40,7 @@ vim.pack.add({
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/chomosuke/typst-preview.nvim.git" },
 	{ src = "https://github.com/nvim-mini/mini.nvim" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter.git" },
 })
 
 --==================================================
@@ -71,8 +72,6 @@ cmp.setup({
 	},
 })
 
---cmp.build = function() require('blink.cmp').build():pwait() end
-
 cmp.build():pwait()
 cmp.setup()
 
@@ -83,12 +82,21 @@ require('oil').setup()
 vim.keymap.set('n', '-', ":Oil<CR>")
 
 -- MINI.NVIM
-
 require('mini.pairs').setup()
 require('mini.pick').setup()
 require('mini.surround').setup()
 
 vim.keymap.set('n', '<leader>f', ":Pick files<CR>")
+
+-- TREESITTER
+
+require('nvim-treesitter').setup()
+require('nvim-treesitter').install { 'bash', 'python', 'c', 'lua' }
+
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'bash', 'python', 'c', 'lua' },
+	callback = function() vim.treesitter.start() end,
+})
 
 --==================================================
 -- APPAREANCE
