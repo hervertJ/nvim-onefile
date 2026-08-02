@@ -10,7 +10,9 @@ Only one file config nvim.
 
 - `ripgrep`, `fzf`, `fd`
 
-- Rust tools
+- Rust tools for `blink.cmp`
+
+- tree-sitter package and tree-sitter-cli in path
 
 > [!NOTE]
 > LSP servers are managed via [Mason](https://github.com/mason-org/mason.nvim).

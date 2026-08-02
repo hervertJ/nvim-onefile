@@ -20,18 +20,6 @@
       "rev": "dc8a9918c3b1bc18a5fcd04d39b6d658074c0886",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
-    "mini.pairs": {
-      "rev": "db0fac0a25884183650352ccf92b362a41ed2e9c",
-      "src": "https://github.com/nvim-mini/mini.pairs"
-    },
-    "mini.pick": {
-      "rev": "8c1f75f8ddd8c9f75d07ed2ab5718d2c3cb65a66",
-      "src": "https://github.com/echasnovski/mini.pick"
-    },
-    "mini.surround": {
-      "rev": "a2f644f3759edd3d3f8b6a6d55378408bfe6d290",
-      "src": "https://github.com/nvim-mini/mini.surround"
-    },
     "nvim-lspconfig": {
       "rev": "292f44408498103c47996ff5c18fd366293840d8",
       "src": "https://github.com/neovim/nvim-lspconfig"
@@ -44,6 +32,10 @@
       "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
       "src": "https://github.com/stevearc/oil.nvim"
     },
+    "snacks.nvim": {
+      "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
+      "src": "https://github.com/folke/snacks.nvim.git"
+    },
     "tokyonight.nvim": {
       "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
       "src": "https://github.com/folke/tokyonight.nvim.git"
@@ -51,10 +43,6 @@
     "typst-preview.nvim": {
       "rev": "87db18b8d19c8b0eed399f52e4c527ce5afe4817",
       "src": "https://github.com/chomosuke/typst-preview.nvim.git"
-    },
-    "vague.nvim": {
-      "rev": "49fe06ad33d8847b931ba4279197bda222374cd1",
-      "src": "https://github.com/vague2k/vague.nvim"
     }
   }
 }

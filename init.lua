@@ -16,7 +16,6 @@ vim.opt.swapfile = false
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.clipboard = "unnamedplus"
-
 vim.opt.winborder = "rounded"
 
 --==================================================
@@ -32,15 +31,17 @@ vim.keymap.set('n', '<leader>q', ':quit<CR>')
 
 vim.pack.add({
 	{ src = "https://github.com/folke/tokyonight.nvim.git" },
-	{ src = "https://github.com/RRethy/base16-nvim" },
+
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/mason-org/mason.nvim.git" },
 	{ src = "https://github.com/saghen/blink.lib" },
 	{ src = "https://github.com/saghen/blink.cmp" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
-	{ src = "https://github.com/chomosuke/typst-preview.nvim.git" },
 	{ src = "https://github.com/nvim-mini/mini.nvim" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter.git" },
+	{ src = "https://github.com/folke/snacks.nvim.git" },
+
+	{ src = "https://github.com/chomosuke/typst-preview.nvim.git" },
 })
 
 --==================================================
@@ -48,7 +49,6 @@ vim.pack.add({
 --==================================================
 
 -- LSP
-
 vim.lsp.enable({ "lua_ls", "tinymist", "clangd", "pyright", "nil_ls" })
 vim.keymap.set('n', '<leader>uf', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>ud', function() --on/off warnigns
@@ -60,47 +60,52 @@ vim.keymap.set('n', '<leader>ud', function() --on/off warnigns
 end, { desc = "Toggle Diagnostics" })
 
 -- MASON
-
 require('mason').setup()
 
 -- BLINK-CMP
-
 local cmp = require('blink.cmp')
 cmp.setup({
 	keymap = {
 		['<CR>'] = { 'accept', 'fallback', },
 	},
 })
-
 cmp.build():pwait()
 cmp.setup()
 
 -- OIL
-
-require('oil').setup()
-
+require('oil').setup({
+	columns = {
+		"permissions",
+		"size",
+		"mtime",
+	},
+})
 vim.keymap.set('n', '-', ":Oil<CR>")
 
 -- MINI.NVIM
 require('mini.pairs').setup()
-require('mini.pick').setup()
 require('mini.surround').setup()
 
-vim.keymap.set('n', '<leader>f', ":Pick files<CR>")
-
 -- TREESITTER
-
 require('nvim-treesitter').setup()
-require('nvim-treesitter').install { 'bash', 'python', 'c', 'lua' }
-
+require('nvim-treesitter').install { 'bash', 'python', 'c', 'lua', 'nix' }
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = { 'bash', 'python', 'c', 'lua' },
+	pattern = { 'bash', 'python', 'c', 'lua', 'nix' },
 	callback = function() vim.treesitter.start() end,
 })
+
+-- SNACKS
+require('snacks').setup({
+	picker = { enabled = true },
+})
+vim.keymap.set('n', '<leader><space>', ":lua Snacks.picker.files()<CR>")
+vim.keymap.set('n', '<leader>/', ":lua Snacks.picker.grep()<CR>")
 
 --==================================================
 -- APPAREANCE
 --==================================================
 
-vim.cmd("colorscheme tokyonight-night")
+require("tokyonight").setup()
+vim.cmd.colorscheme("tokyonight-night")
+
 vim.cmd(":hi statusline guibg=NONE")
