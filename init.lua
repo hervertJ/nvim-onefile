@@ -114,9 +114,10 @@ require("gruvbox").setup({
   bold = false,
 
   overrides = {
-    SignColumn = { bg = "#282828" },
-    DiagnosticSignWarn = { fg = "#fabd2f", bg = "#282828" },
-    DiagnosticSignError = { fg = "#fb4934", bg = "#282828" },
+    --SignColumn = { bg = "#282828" },
+    SignColumn = { bg = "#3c3836" },
+    DiagnosticSignWarn = { fg = "#fabd2f", bg = "#3c3836" },
+    DiagnosticSignError = { fg = "#fb4934", bg = "#3c3836" },
     ["@lsp.type.function.lua"] = { fg = "#fe8019" },
   },
 })
@@ -125,12 +126,8 @@ vim.cmd.colorscheme("gruvbox")
 
 vim.cmd(":hi statusline guibg=NONE")
 
-
-
-
-
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "lua", "qml" },
+  pattern = { "lua", "qml", "nix" },
   callback = function()
     vim.bo.shiftwidth = 2
     vim.bo.tabstop = 2
