@@ -115,14 +115,16 @@ vim.api.nvim_create_autocmd('FileType', {
 require('snacks').setup({
   picker = { enabled = true },
   image = {
+    enabled = true,
 
     -- for Obsidian
-    resolve = function(path, src)
-      local api = require "obsidian.api"
-      if api.path_is_note(path) then
-        return api.resolve_attachment_path(src)
-      end
-    end,
+    -- resolve = function(path, src)
+    --   local api = require "obsidian.api"
+    --   if api.path_is_note(path) then
+    --     return api.resolve_attachment_path(src)
+    --   end
+    -- end,
+
   },
 })
 vim.keymap.set('n', '<leader><space>', ":lua Snacks.picker.files()<CR>")
