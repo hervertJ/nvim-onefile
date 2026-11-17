@@ -102,6 +102,7 @@ require('mini.hipatterns').setup({
 require('mini.tabline').setup()
 vim.keymap.set('n', 'L', ':bnext<CR>', { silent = true })
 vim.keymap.set('n', 'H', ':bprevious<CR>', { silent = true })
+vim.keymap.set('n', '<leader>bo', ':%bd|e#|bd#<CR>', { desc = 'Cerrar todos los buffers menos el acutal' })
 
 -- TREESITTER
 require('nvim-treesitter').setup()
@@ -219,7 +220,9 @@ require("gruvbox").setup({
   },
 })
 
+--vim.o.background = "dark"
 vim.cmd.colorscheme("gruvbox")
+--vim.cmd.colorscheme("tokyonight-night")
 
 --vim.cmd(":hi statusline guibg=NONE")
 
@@ -244,4 +247,3 @@ vim.cmd.colorscheme("gruvbox")
 -- 	--vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none", fg = "#767676" })
 -- end
 --
--- set_transparent()
